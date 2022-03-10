@@ -1,4 +1,10 @@
-import { get, update, start, end } from '../services/database/game.js'
+import {
+	get,
+	end,
+	start,
+	update,
+	addPlayer
+} from '../services/database/game.js'
 import mongoose from 'mongoose'
 
 const gameSchema = new mongoose.Schema({
@@ -15,20 +21,20 @@ const gameSchema = new mongoose.Schema({
 			}
 		],
 		required: true,
-		// For testing. FIXME: Remove
 		default: [
-			{ name: 'test1', userId: 1 },
-			{ name: 'test2', userId: 2 },
-			{ name: 'test3', userId: 849670500 },
-			{ name: 'test4', userId: 4 },
-			{ name: 'test5', userId: 5 },
-			{ name: 'test6', userId: 6 },
-			{ name: 'test7', userId: 7 },
-			{ name: 'test8', userId: 8 },
-			{ name: 'test9', userId: 9 },
-			{ name: 'test10', userId: 10 },
-			{ name: 'test11', userId: 11 },
-			{ name: 'test12', userId: 12 }
+			// For testing. FIXME: Remove
+			// { name: 'test1', userId: 1 },
+			// { name: 'test2', userId: 2 },
+			// { name: 'test3', userId: 849670500 },
+			// { name: 'test4', userId: 4 },
+			// { name: 'test5', userId: 5 },
+			// { name: 'test6', userId: 6 },
+			// { name: 'test7', userId: 7 },
+			// { name: 'test8', userId: 8 },
+			// { name: 'test9', userId: 9 },
+			// { name: 'test10', userId: 10 },
+			// { name: 'test11', userId: 11 },
+			// { name: 'test12', userId: 12 }
 		]
 	},
 	state: {
@@ -69,6 +75,10 @@ class gameClass {
 
 	updateData(updates) {
 		return update.bind(this.constructor)(this.groupId, updates)
+	}
+
+	addPlayer(userId, name) {
+		return addPlayer.bind(this.constructor)(this.groupId, userId, name)
 	}
 
 	start() {

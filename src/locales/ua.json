@@ -1,5 +1,8 @@
 {
     "greeting": "Привiт!",
+    "buttons": {
+        "join": "Приєднатися"
+    },
     "errors": {
         "unknownError": "Невiдома помилка",
         "unknownCommand": "Невiдома команда",
@@ -7,7 +10,9 @@
         "cantStartInPM": "Неможливо почати гру в особистих повiдомленнях",
         "cantEndInPM": "Неможливо закiнчити гру в особистих повiдомленнях",
         "notInTheGame": "Ти не у грi",
-        "gameIsNotCreated": "Гра не запущена"
+        "gameIsNotCreated": "Гра не запущена",
+        "gameNotFound": "Гра вже закiнчилась",
+        "gameIsAlreadyStarted": "Гра вже почалась"
     },
     "responses": {
         "gameState": "Статус гри: ${state}",
@@ -15,7 +20,8 @@
         "gameCreated": "Гра створена",
         "gameStarted": "Гра почалась!",
         "gameEnded": "Гра завершена!\n\nПереможцi: ${winners}",
-        "gameStopped": "Гра завершена"
+        "gameStopped": "Гра завершена",
+        "joinedGame": "Ти приєднався(-лася) до гри"
     },
     "components": {
         "boolean": {

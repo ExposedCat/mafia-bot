@@ -1,3 +1,5 @@
+import { keyboards } from '../../data/keyboards.js'
+import { keyboard } from '../../helpers/keyboard.js'
 import { createGame } from '../../services/create-game.js'
 import { startGame } from '../../services/start-game.js'
 
@@ -17,7 +19,11 @@ async function handleStartGameCommand(ctx) {
 			}
 		} else {
 			await createGame(ctx.db, ctx.chat.id)
-			await ctx.text('responses.gameCreated')
+			await ctx.text(
+				'responses.gameCreated',
+				{},
+				keyboard(ctx.i18n, keyboards.joinGame(ctx.chat.id))
+			)
 		}
 	} else {
 		await ctx.text('errors.cantStartInPM')
