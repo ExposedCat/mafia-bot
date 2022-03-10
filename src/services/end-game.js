@@ -3,7 +3,6 @@ async function endGame(game, Player) {
 	const players = await Player.getMany(playerIds)
 	const mafiaAlive = players.some(player => player.isMafia)
 	const winners = mafiaAlive ? 'mafia' : 'peaceful'
-	await game.end()
 	await Player.deleteMany({
 		userId: {
 			$in: playerIds

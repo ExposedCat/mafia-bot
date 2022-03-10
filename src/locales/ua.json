@@ -14,7 +14,8 @@
         "player": "Гравець: ${name}\nРоль: ${role}\nЖивий: ${isAlive}",
         "gameCreated": "Гра створена",
         "gameStarted": "Гра почалась!",
-        "gameEnded": "Гра завершена!\n\nПереможцi: ${winners}"
+        "gameEnded": "Гра завершена!\n\nПереможцi: ${winners}",
+        "gameStopped": "Гра завершена"
     },
     "components": {
         "boolean": {
