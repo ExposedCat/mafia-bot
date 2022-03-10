@@ -10,9 +10,11 @@ class ExtendedContext extends Telegraf.Context {
 		this.game = null
 	}
 
-	popup = showPopup
+	text(key, data = {}, extra = {}) {
+		return sendMessage.bind(this)(this.i18n.t(key, data), extra)
+	}
 
-	text = sendMessage
+	popup = showPopup
 
 	async getGame() {
 		if (this.game === null) {
@@ -24,10 +26,7 @@ class ExtendedContext extends Telegraf.Context {
 
 	async getPlayer() {
 		if (this.player === null) {
-			this.player = await this.db.Player.getOne(
-				this.from.id,
-				this.from.first_name
-			)
+			this.player = await this.db.Player.getOne(this.from.id)
 		}
 
 		return this.player

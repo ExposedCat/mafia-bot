@@ -1,14 +1,19 @@
-import { get, update } from '../services/database/player.js'
+import { get, getMany, update } from '../services/database/player.js'
 import mongoose from 'mongoose'
 
 const playerSchema = new mongoose.Schema({
+	isMafia: {
+		type: Boolean,
+		required: true
+	},
 	userId: {
 		type: Number,
 		unique: true,
 		required: true
 	},
 	chatId: {
-		type: Number
+		type: Number,
+		required: true
 	},
 	name: {
 		type: String,
@@ -39,6 +44,10 @@ const playerSchema = new mongoose.Schema({
 class playerClass {
 	static getOne(userId, name) {
 		return get.bind(this)(userId, name)
+	}
+
+	static getMany(userIds) {
+		return get.bind(this)(userIds)
 	}
 
 	updateData(updates) {

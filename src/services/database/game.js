@@ -15,12 +15,20 @@ function update(groupId, updates) {
 }
 
 function start(groupId) {
-	return this.updateOne({ groupId }, {
-		state: 'night'
-	})
+	return this.updateOne(
+		{ groupId },
+		{
+			state: 'night'
+		}
+	)
 }
 
-function end(groupId) {
+async function end(groupId, Player) {
+	await Player.deleteMany({
+		userId: {
+			$in: this.players
+		}
+	})
 	return this.deleteOne({ groupId })
 }
 

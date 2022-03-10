@@ -1,33 +1,35 @@
-import { start as processCommand } from '../../services/start-command.js'
-
 async function handleStartCommand(ctx) {
 	if (ctx.chat.id !== ctx.from.id) {
 		const game = await ctx.getGame()
-		console.log(game)
 		if (game) {
-			await ctx.text(`Game on state ${game.state}`)
+			await ctx.text('responses.gameState', {
+				state: ctx.i18n.t(`components.states.${game.state}`)
+			})
 		} else {
-			await ctx.text(`Game not started`)
+			await ctx.text('errors.unknownError')
 		}
 	} else {
 		const player = await ctx.getPlayer()
-		console.log(player)
-		if (player.chatId) {
+		if (player) {
 			const game = await ctx.db.Game.getOne(player.chatId)
-			console.log(game)
 			if (game) {
-				await ctx.text(`Game on state ${game.state}`)
-				await ctx.text(`Player ${player.role} - ${player.isAlive}`)
+				await ctx.text('responses.gameState', {
+					state: ctx.i18n.t(`components.states.${game.state}`)
+				})
+				await ctx.text('responses.player', {
+					name: player.name,
+					role: ctx.i18n.t(`components.roles.${player.role}`),
+					isAlive: ctx.i18n.t(
+						`components.boolean.${player.isAlive ? 'yes' : 'no'}`
+					)
+				})
 			} else {
-				await ctx.text(`Game not started (?!)`)
+				await ctx.text('errors.unknownError')
 			}
 		} else {
-			await ctx.text(`Player is not in the game`)
+			await ctx.text('errors.notInTheGame')
 		}
 	}
-
-	const { text } = await processCommand(ctx.i18n)
-	await ctx.text(text)
 }
 
 export { handleStartCommand }

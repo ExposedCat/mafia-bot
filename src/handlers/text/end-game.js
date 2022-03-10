@@ -1,11 +1,11 @@
-// import { start as processCommand } from '../../services/start-command.js'
+import { endGame } from '../../services/end-game.js'
 
 async function handleEndGameCommand(ctx) {
 	if (ctx.chat.id !== ctx.from.id) {
 		const game = await ctx.getGame()
 		console.log(game)
 		if (game) {
-			await game.end()
+			await endGame(game)
 		} else {
 			await ctx.text(`Game not started`)
 		}

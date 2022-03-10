@@ -1,0 +1,36 @@
+{
+    "greeting": "Привiт!",
+    "errors": {
+        "unknownCommand": "Невiдома команда",
+        "notEnoughPlayers": "Недостатньо гравцiв для початку гри ${players}/${minimum}",
+        "cantStartInPM": "Неможливо почати гру в особистих повiдомленнях",
+        "notInTheGame": "Ты не у грi"
+    },
+    "responses": {
+        "gameState": "Статус гри: ${state}",
+        "player": "Гравець: ${name}\nРоль: ${role}\nЖивий: ${isAlive}"
+    },
+    "components": {
+        "boolean": {
+            "yes": "Так",
+            "no": "Нi"
+        },
+        "states": {
+            "stopped": "Не розпочата",
+            "recruiting": "Набiр гравцiв",
+            "day": "День",
+            "night": "Нiч"
+        },
+        "roles": {
+            "peaceful": "Мирний",
+            "mafia": "Мафiя",
+            "don": "Дон",
+            "doctor": "Доктор",
+            "commissioner": "Комiссар",
+            "lucky": "Щасливчик",
+            "suicide": "Самогубець",
+            "bum": "Безхатько",
+            "maniac": "Манiяк"
+        }
+    }
+}
