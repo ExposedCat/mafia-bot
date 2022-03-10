@@ -6,7 +6,7 @@ async function handleStartCommand(ctx) {
 				state: ctx.i18n.t(`components.states.${game.state}`)
 			})
 		} else {
-			await ctx.text('errors.unknownError')
+			await ctx.text('errors.gameIsNotCreated')
 		}
 	} else {
 		const player = await ctx.getPlayer()

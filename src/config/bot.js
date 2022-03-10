@@ -26,8 +26,8 @@ async function initBot(dbInstance) {
 
 	bot.start(handleStartCommand)
 
-	bot.command('/game', handleStartGameCommand)
-	bot.command('/stop', handleEndGameCommand)
+	bot.command('/play', handleStartGameCommand)
+	bot.command('/end', handleEndGameCommand)
 
 	bot.on('message', handleAnyTextMessage)
 

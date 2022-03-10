@@ -14,7 +14,7 @@ db = null
 
 bot.launch()
 
-await bot.context.db.Game.deleteMany()
-await bot.context.db.Player.deleteMany()
+// await bot.context.db.Game.deleteMany()
+// await bot.context.db.Player.deleteMany()
 
 console.info('App started')

@@ -3,18 +3,17 @@ import { endGame } from '../../services/end-game.js'
 async function handleEndGameCommand(ctx) {
 	if (ctx.chat.id !== ctx.from.id) {
 		const game = await ctx.getGame()
-		console.log(game)
 		if (game) {
-			await endGame(game)
+			const winners = await endGame(game, ctx.db.Player)
+			await ctx.text('responses.gameEnded', {
+				winners: ctx.i18n.t(`components.winners.${winners}`)
+			})
 		} else {
-			await ctx.text(`Game not started`)
+			await ctx.text('errors.unknownCommand')
 		}
 	} else {
-		await ctx.text(`Can't end game in PM`)
+		await ctx.text('errors.cantEndInPM')
 	}
-
-	// const { text } = await processCommand(ctx.i18n)
-	// await ctx.text(text)
 }
 
 export { handleEndGameCommand }

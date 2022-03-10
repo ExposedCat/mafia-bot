@@ -1,5 +1,13 @@
 function get(userId) {
-	return this.findOne({ userId })
+	if (typeof userId === 'number') {
+		return this.findOne({ userId })
+	} else {
+		return this.find({
+			userId: {
+				$in: userId
+			}
+		})
+	}
 }
 
 function update(userId, updates) {

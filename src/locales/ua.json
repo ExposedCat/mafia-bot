@@ -1,14 +1,20 @@
 {
     "greeting": "Привiт!",
     "errors": {
+        "unknownError": "Невiдома помилка",
         "unknownCommand": "Невiдома команда",
         "notEnoughPlayers": "Недостатньо гравцiв для початку гри ${players}/${minimum}",
         "cantStartInPM": "Неможливо почати гру в особистих повiдомленнях",
-        "notInTheGame": "Ты не у грi"
+        "cantEndInPM": "Неможливо закiнчити гру в особистих повiдомленнях",
+        "notInTheGame": "Ти не у грi",
+        "gameIsNotCreated": "Гра не запущена"
     },
     "responses": {
         "gameState": "Статус гри: ${state}",
-        "player": "Гравець: ${name}\nРоль: ${role}\nЖивий: ${isAlive}"
+        "player": "Гравець: ${name}\nРоль: ${role}\nЖивий: ${isAlive}",
+        "gameCreated": "Гра створена",
+        "gameStarted": "Гра почалась!",
+        "gameEnded": "Гра завершена!\n\nПереможцi: ${winners}"
     },
     "components": {
         "boolean": {
@@ -16,7 +22,6 @@
             "no": "Нi"
         },
         "states": {
-            "stopped": "Не розпочата",
             "recruiting": "Набiр гравцiв",
             "day": "День",
             "night": "Нiч"
@@ -31,6 +36,10 @@
             "suicide": "Самогубець",
             "bum": "Безхатько",
             "maniac": "Манiяк"
+        },
+        "winners": {
+            "peaceful": "Мирнi",
+            "mafia": "Мафiя"
         }
     }
 }

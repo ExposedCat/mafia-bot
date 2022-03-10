@@ -34,7 +34,7 @@ const gameSchema = new mongoose.Schema({
 	state: {
 		type: String,
 		required: true,
-		default: 'stopped'
+		default: 'recruiting'
 	},
 	night: {
 		type: {

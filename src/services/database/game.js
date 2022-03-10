@@ -1,13 +1,5 @@
 function get(groupId) {
-	return this.findOneAndUpdate(
-		{ groupId },
-		{},
-		{
-			new: true,
-			upsert: true,
-			setDefaultsOnInsert: true
-		}
-	)
+	return this.findOne({ groupId })
 }
 
 function update(groupId, updates) {
@@ -15,20 +7,10 @@ function update(groupId, updates) {
 }
 
 function start(groupId) {
-	return this.updateOne(
-		{ groupId },
-		{
-			state: 'night'
-		}
-	)
+	return this.updateOne({ groupId }, { state: 'night' })
 }
 
-async function end(groupId, Player) {
-	await Player.deleteMany({
-		userId: {
-			$in: this.players
-		}
-	})
+async function end(groupId) {
 	return this.deleteOne({ groupId })
 }
 
