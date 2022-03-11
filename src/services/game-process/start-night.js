@@ -14,31 +14,31 @@ async function startNight(ctx) {
 		let keyboard = {}
 		switch (player.role) {
 			case 'don': {
-				response = 'responses.inGame.mafiaAction'
+				response = 'responses.inGame.actions.mafia'
 				break
 			}
 			case 'mafia': {
-				response = 'responses.inGame.mafiaAction'
+				response = 'responses.inGame.actions.mafia'
 				break
 			}
 			case 'commissioner': {
-				response = 'responses.inGame.commissionerAction'
+				response = 'responses.inGame.actions.commissioner'
 				break
 			}
 			case 'doctor': {
-				response = 'responses.inGame.doctorAction'
+				response = 'responses.inGame.actions.doctor'
 				break
 			}
 			case 'dum': {
-				response = 'responses.inGame.bumAction'
+				response = 'responses.inGame.actions.bum'
 				break
 			}
 			case 'maniac': {
-				response = 'responses.inGame.maniacAction'
+				response = 'responses.inGame.actions.maniac'
 				break
 			}
 			default: {
-				response = 'responses.inGame.peacefulAction'
+				response = 'responses.inGame.actions.peaceful'
 			}
 		}
 		if (response) {

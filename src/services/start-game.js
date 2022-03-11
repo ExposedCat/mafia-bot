@@ -24,7 +24,7 @@ async function startGame(ctx) {
 		return player
 	})
 	await ctx.db.Player.insertMany(players)
-	await game.start('night')
+	await game.start(ctx, 'night')
 	await startNight(ctx)
 }
 

@@ -86,8 +86,9 @@ class gameClass {
 		return addPlayer.bind(this.constructor)(this.groupId, userId, name)
 	}
 
-	start(state) {
-		return start.bind(this.constructor)(this.groupId, state)
+	start(ctx, state) {
+		const playerIds = this.players.map(player => player.userId)
+		return start.bind(this.constructor)(this.groupId, playerIds, ctx, state)
 	}
 
 	end(Player) {
