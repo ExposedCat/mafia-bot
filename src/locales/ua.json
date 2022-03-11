@@ -21,7 +21,17 @@
         "gameStarted": "Гра почалась!",
         "gameEnded": "Гра завершена!\n\nПереможцi: ${winners}",
         "gameStopped": "Гра завершена",
-        "joinedGame": "Ти приєднався(-лася) до гри"
+        "joinedGame": "Ти приєднався(-лася) до гри",
+        "inGame": {
+            "nightStarted": "Нiч",
+            "dayStarted": "День",
+            "peacefulAction": "Ти ляг(ла) спати",
+            "mafiaAction": "Мафія проводить голосування за наступну жертву:",
+            "commissionerAction": "Ти можеш перевірити гравця або вбити когось навмання...",
+            "doctorAction": "Кого будемо лікувати?",
+            "bumAction": "До кого підемо за пляшкою?",
+            "maniacAction": "Час обрати наступну жертву:"
+        }
     },
     "components": {
         "boolean": {

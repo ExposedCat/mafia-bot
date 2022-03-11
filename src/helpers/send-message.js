@@ -1,6 +1,6 @@
 function sendMessage(text, extra = {}) {
 	return this.telegram.sendMessage(
-		this.chat.id,
+		extra.chatId || this.chat.id,
 		text,
 		Object.assign(extra, {
 			parse_mode: 'HTML',

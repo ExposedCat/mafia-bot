@@ -17,8 +17,8 @@ function addPlayer(groupId, userId, userName) {
 	})
 }
 
-function start(groupId) {
-	return this.updateOne({ groupId }, { state: 'night' })
+function start(groupId, state) {
+	return this.updateOne({ groupId }, { state })
 }
 
 function end(groupId) {

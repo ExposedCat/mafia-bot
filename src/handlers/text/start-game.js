@@ -7,9 +7,13 @@ async function handleStartGameCommand(ctx) {
 	if (ctx.chat.id !== ctx.from.id) {
 		const game = await ctx.getGame()
 		if (game) {
+			if (game.state !== 'recruiting') {
+				await ctx.text('errors.gameIsAlreadyStarted')
+				return
+			}
 			if (game.players.length >= 7) {
-				await startGame(game, ctx.db)
 				await ctx.text('responses.gameStarted')
+				await startGame(ctx)
 			} else {
 				await game.end(ctx.db)
 				await ctx.text('errors.notEnoughPlayers', {

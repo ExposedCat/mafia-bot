@@ -24,13 +24,13 @@ const gameSchema = new mongoose.Schema({
 		required: true,
 		default: [
 			// For testing. FIXME: Remove
-			// { name: 'test1', userId: 1 },
-			// { name: 'test2', userId: 2 },
+			{ name: 'test1', userId: 1 },
+			{ name: 'test2', userId: 2 },
 			// { name: 'test3', userId: 849670500 },
-			// { name: 'test4', userId: 4 },
-			// { name: 'test5', userId: 5 },
-			// { name: 'test6', userId: 6 },
-			// { name: 'test7', userId: 7 },
+			{ name: 'test4', userId: 4 },
+			{ name: 'test5', userId: 5 },
+			{ name: 'test6', userId: 6 },
+			{ name: 'test7', userId: 7 },
 			// { name: 'test8', userId: 8 },
 			// { name: 'test9', userId: 9 },
 			// { name: 'test10', userId: 10 },
@@ -86,8 +86,8 @@ class gameClass {
 		return addPlayer.bind(this.constructor)(this.groupId, userId, name)
 	}
 
-	start() {
-		return start.bind(this.constructor)(this.groupId)
+	start(state) {
+		return start.bind(this.constructor)(this.groupId, state)
 	}
 
 	end(Player) {
