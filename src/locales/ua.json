@@ -6,7 +6,7 @@
     "errors": {
         "unknownError": "Невiдома помилка",
         "unknownCommand": "Невiдома команда",
-        "notEnoughPlayers": "Недостатньо гравцiв для початку гри ${players}/${minimum}",
+        "notEnoughPlayers": "Недостатньо гравцiв для початку гри: ${players}/${minimum}",
         "cantStartInPM": "Неможливо почати гру в особистих повiдомленнях",
         "cantEndInPM": "Неможливо закiнчити гру в особистих повiдомленнях",
         "notInTheGame": "Ти не у грi",

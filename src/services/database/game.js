@@ -21,8 +21,14 @@ function start(groupId) {
 	return this.updateOne({ groupId }, { state: 'night' })
 }
 
-async function end(groupId) {
+function end(groupId) {
 	return this.deleteOne({ groupId })
 }
 
-export { get, update, start, end, addPlayer }
+function findPlayerGame(userId) {
+	return this.findOne({
+		'players.userId': userId
+	})
+}
+
+export { get, update, start, end, addPlayer, findPlayerGame }

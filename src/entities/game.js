@@ -3,7 +3,8 @@ import {
 	end,
 	start,
 	update,
-	addPlayer
+	addPlayer,
+	findPlayerGame
 } from '../services/database/game.js'
 import mongoose from 'mongoose'
 
@@ -71,6 +72,10 @@ const gameSchema = new mongoose.Schema({
 class gameClass {
 	static getOne(groupId) {
 		return get.bind(this)(groupId)
+	}
+
+	static findPlayerGame(userId) {
+		return findPlayerGame.bind(this)(userId)
 	}
 
 	updateData(updates) {

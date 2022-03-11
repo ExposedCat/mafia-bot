@@ -9,23 +9,31 @@ async function handleStartCommand(ctx) {
 			state: ctx.i18n.t(`components.states.${game.state}`)
 		})
 	} else {
-		const player = await ctx.getPlayer()
-		if (player) {
-			const game = await ctx.db.Game.getOne(player.chatId)
+		let player = await ctx.getPlayer()
+		let game = null
+		if (!player) {
+			game = await ctx.db.Game.findPlayerGame(ctx.from.id)
+		}
+		if (player || game) {
 			if (!game) {
-				await ctx.text('errors.unknownError')
-				return
+				game = await ctx.db.Game.getOne(player.chatId)
+				if (!game) {
+					await ctx.text('errors.unknownError')
+					return
+				}
 			}
 			await ctx.text('responses.gameState', {
 				state: ctx.i18n.t(`components.states.${game.state}`)
 			})
-			await ctx.text('responses.player', {
-				name: player.name,
-				role: ctx.i18n.t(`components.roles.${player.role}`),
-				isAlive: ctx.i18n.t(
-					`components.boolean.${player.isAlive ? 'yes' : 'no'}`
-				)
-			})
+			if (player) {
+				await ctx.text('responses.player', {
+					name: player.name,
+					role: ctx.i18n.t(`components.roles.${player.role}`),
+					isAlive: ctx.i18n.t(
+						`components.boolean.${player.isAlive ? 'yes' : 'no'}`
+					)
+				})
+			}
 		} else {
 			const gameId = ctx.startPayload
 			if (!gameId) {
