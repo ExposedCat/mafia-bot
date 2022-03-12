@@ -15,7 +15,7 @@ async function handleStartGameCommand(ctx) {
 				await ctx.text('responses.gameStarted')
 				await startGame(ctx)
 			} else {
-				await game.end(ctx.db)
+				await game.end()
 				await ctx.text('errors.notEnoughPlayers', {
 					players: game.players.length,
 					minimum: 7

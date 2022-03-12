@@ -7,7 +7,8 @@ async function handleEndGameCommand(ctx) {
 			if (game.state === 'recruiting') {
 				await ctx.text('responses.gameStopped')
 			} else {
-				const winners = await endGame(game, ctx.db.Player)
+				const { winners } = await game.checkStatus(ctx.db.Player)
+				await endGame(game, ctx.db.Player)
 				await ctx.text('responses.gameEnded', {
 					winners: ctx.i18n.t(`components.winners.${winners}`)
 				})

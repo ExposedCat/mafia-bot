@@ -43,4 +43,32 @@ function findPlayerGame(userId) {
 	})
 }
 
-export { get, update, start, end, addPlayer, findPlayerGame }
+async function checkStatus(Player) {
+	const playerIds = this.players.map(player => player.userId)
+	const players = await Player.getMany(playerIds)
+
+	let peacefulAlive = false
+	let mafiaAlive = false
+	for (const player of players) {
+		if (player.isAlive) {
+			if (player.isMafia) {
+				mafiaAlive = true
+				if (peacefulAlive) {
+					break
+				}
+			} else {
+				peacefulAlive = true
+				if (mafiaAlive) {
+					break
+				}
+			}
+		}
+	}
+
+	return {
+		end: !peacefulAlive || !mafiaAlive,
+		winners: peacefulAlive ? 'peaceful' : 'mafia'
+	}
+}
+
+export { get, update, start, end, addPlayer, findPlayerGame, checkStatus }

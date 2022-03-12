@@ -4,7 +4,8 @@ import {
 	start,
 	update,
 	addPlayer,
-	findPlayerGame
+	checkStatus,
+	findPlayerGame,
 } from '../services/database/game.js'
 import mongoose from 'mongoose'
 
@@ -76,6 +77,10 @@ class gameClass {
 
 	static findPlayerGame(userId) {
 		return findPlayerGame.bind(this)(userId)
+	}
+
+	checkStatus(Player) {
+		return checkStatus.bind(this)(Player)
 	}
 
 	updateData(updates) {
