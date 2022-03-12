@@ -13,47 +13,27 @@ async function startNight(ctx) {
 	)
 	for (const player of players) {
 		let response = null
-		let keyboard = 'targets'
+		let keyboard = {}
 		switch (player.role) {
-			case 'don': {
-				response = 'responses.inGame.actions.mafia'
-				break
-			}
-			case 'mafia': {
-				response = 'responses.inGame.actions.mafia'
-				break
-			}
 			case 'commissioner': {
 				response = 'responses.inGame.actions.commissioner'
 				keyboard = makeKeyboard(ctx.i18n, keyboards.commissionerActions)
 				break
 			}
-			case 'doctor': {
-				response = 'responses.inGame.actions.doctor'
-				break
-			}
-			case 'dum': {
-				response = 'responses.inGame.actions.bum'
-				break
-			}
-			case 'maniac': {
-				response = 'responses.inGame.actions.maniac'
+			case 'lucky':
+			case 'suicide': {
+				response = 'responses.inGame.actions.peaceful'
 				break
 			}
 			default: {
-				response = 'responses.inGame.actions.peaceful'
-				keyboard = {}
+				response = `responses.inGame.actions.${player.role}`
+				keyboard = makeKeyboard(
+					ctx.i18n,
+					keyboards.targets(players, player.restrictedTargets)
+				)
 			}
 		}
-		if (keyboard === 'targets') {
-			keyboard = makeKeyboard(
-				ctx.i18n,
-				keyboards.targets(players, player.restrictedTargets)
-			)
-		}
-		if (response) {
-			await message(player.userId, response, {}, keyboard)
-		}
+		await message(player.userId, response, {}, keyboard)
 	}
 }
 
