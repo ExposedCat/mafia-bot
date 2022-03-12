@@ -1,4 +1,6 @@
 import { notify } from '../../helpers/notify.js'
+import { keyboard as makeKeyboard } from '../../helpers/keyboard.js'
+import { keyboards } from '../../data/keyboards.js'
 
 async function startNight(ctx) {
 	const message = (chatId, text, data = {}, keyboard) =>
@@ -11,7 +13,7 @@ async function startNight(ctx) {
 	)
 	for (const player of players) {
 		let response = null
-		let keyboard = {}
+		let keyboard = 'targets'
 		switch (player.role) {
 			case 'don': {
 				response = 'responses.inGame.actions.mafia'
@@ -23,6 +25,7 @@ async function startNight(ctx) {
 			}
 			case 'commissioner': {
 				response = 'responses.inGame.actions.commissioner'
+				keyboard = makeKeyboard(ctx.i18n, keyboards.commissionerActions)
 				break
 			}
 			case 'doctor': {
@@ -39,7 +42,14 @@ async function startNight(ctx) {
 			}
 			default: {
 				response = 'responses.inGame.actions.peaceful'
+				keyboard = {}
 			}
+		}
+		if (keyboard === 'targets') {
+			keyboard = makeKeyboard(
+				ctx.i18n,
+				keyboards.targets(players, player.restrictedTargets)
+			)
 		}
 		if (response) {
 			await message(player.userId, response, {}, keyboard)

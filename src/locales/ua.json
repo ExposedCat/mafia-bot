@@ -1,7 +1,10 @@
 {
     "greeting": "Привiт!",
     "buttons": {
-        "join": "Приєднатися"
+        "join": "Приєднатися",
+        "target": "· ${name} ·",
+        "checkRole": "Перевiрити роль",
+        "kill": "Вбити"
     },
     "errors": {
         "unknownError": "Невiдома помилка",
