@@ -21,6 +21,7 @@ async function startNight(ctx) {
 				break
 			}
 			case 'lucky':
+			case 'peaceful':
 			case 'suicide': {
 				response = 'responses.inGame.actions.peaceful'
 				break
